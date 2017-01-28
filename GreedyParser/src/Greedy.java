@@ -43,19 +43,22 @@ public class Greedy
                 {
                     out.add (copy.substring(0, nearPos));
                     copy = copy.substring(nearPos);
-                    //System.out.println(nearPos);
                 }
                 out.add(nearTok);
                 copy = copy.substring(nearTok.length());
+                if (copy.isEmpty())
+                    break;
             }
         }
+        if (!copy.isEmpty())
+            out.add(copy);
         return out;
     }
 
 
     public static void main (String[] args)
     {
-        Greedy g = new Greedy("apetpeterpepepetepetepepetexxxpe");
+        Greedy g = new Greedy("apetpeterpepepetepetepepetexxxpell");
         g.getList().forEach(System.out::println);
     }
 }
