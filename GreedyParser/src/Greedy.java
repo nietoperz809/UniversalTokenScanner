@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 
 /**
@@ -6,17 +7,13 @@ import java.util.Comparator;
  */
 public class Greedy
 {
-    ArrayList<String> tokens = new ArrayList<>();
+    ArrayList<String> tokens;
     String combined;
 
-    public Greedy(String in)
+    public Greedy(String in, String[] tokenList)
     {
+        tokens = new ArrayList<String>(Arrays.asList(tokenList));
         combined = in;
-
-        tokens.add("pe");
-        tokens.add("pet");
-        tokens.add("peter");
-
         tokens.sort (Comparator.comparingInt(String::length).reversed());
     }
 
@@ -58,7 +55,9 @@ public class Greedy
 
     public static void main (String[] args)
     {
-        Greedy g = new Greedy("apetpeterpepepetepetepepetexxxpell");
+        String[] tokens = {"pe", "pet", "peter"};
+        String input = "apetpeterpepepetepetepepetexxxpell";
+        Greedy g = new Greedy(input, tokens);
         g.getList().forEach(System.out::println);
     }
 }
